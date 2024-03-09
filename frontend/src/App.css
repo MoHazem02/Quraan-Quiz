@@ -1,0 +1,351 @@
+:root {
+  --font-family-amiri: "Amiri Quran", serif;
+  --font-family-amiri-normal: "Amiri", serif;
+  --color-gold-gradient: linear-gradient(to bottom right, #ff9900, #ddff00);
+  --color-green-gradient: linear-gradient(to bottom right, #b6dcd4, #216255);
+  --color-white: white;
+  --color-dark-white: #f5f5f5;
+  --color-box-img: #cdcdcd;
+  --color-background: #282c34;
+  --color-background-darker: #20232a;
+  --color-white-blue: #61dafb;
+  --color-orange: orange;
+  --font-size-16: 1rem;
+  --font-size-large: 2.5rem;
+  --font-size-medium: 2.2rem;
+  --font-weight-bold: 700;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+form,
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-family-amiri-normal);
+  background-color: var(--color-background);
+  color: var(--color-text);
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-white);
+  background-color: var(--color-gold);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+  background: var(--color-orange);
+}
+
+.video__loop {
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.02;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+/* Header */
+.header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--color-box-img);
+  background-color: #333333;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: row;
+}
+
+.header:hover {
+  background-color: #444444;
+}
+.logo {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: var(--font-weight-bold);
+  gap: 0.5rem;
+}
+.logo__img {
+  width: 50px;
+  display: flex;
+  justify-content: right;
+  filter: invert(50%);
+  transition: filter 0.3s ease;
+}
+.logo__img:hover {
+  filter: hue-rotate();
+}
+.logo__link a {
+  margin: 0 0.5rem;
+}
+.logo__link a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo__link:hover {
+  color: #ffa500;
+}
+
+.logo__link:active {
+  color: #ff6347;
+  transform: translateY(0.2rem);
+}
+.navbar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar__item {
+  margin-right: 1rem;
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.navbar__link:hover {
+  color: #ffa500; /* Change to desired hover color */
+}
+
+/* // End Header */
+
+/* Bio */
+.bio {
+  background-color: var(--color-background);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: var(--color-white);
+  font-family: var(--font-family-amiri);
+}
+.bio__top {
+  color: var(--color-white-blue);
+  font-size: var(--font-size-large);
+  margin-bottom: 20px;
+}
+
+.bio__center {
+  font-size: var(--font-size-medium);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 100vb;
+}
+
+/* // End Bio */
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer */
+
+@keyframes jump {
+  0% {
+    transform: translateY(0.2rem);
+  }
+  35% {
+    transform: translateY(-0.2rem);
+  }
+  70% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes jump-4 {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10%) scale(1);
+  }
+}
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.footer {
+  position: fixed;
+  z-index: 2;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--color-box-img);
+  background-color: #333333;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer:hover {
+  background-color: #444444;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+}
+
+.footer__author {
+  font-weight: bold;
+  font-size: 1.1rem;
+  display: flex;
+}
+
+.heart {
+  color: red;
+  animation: heartbeat 1.5s infinite;
+}
+
+.footer__bio {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow {
+  margin-left: 5px;
+  display: inline-block;
+  animation: jump 1s infinite alternate ease-in-out;
+}
+
+.contact__socials {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-left: auto;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: var(--transition-timing);
+  /* background-color: var(--color-background-darker); */
+}
+.contact__social {
+  transition: var(--transition-timing);
+  width: 2.5rem;
+  animation: jump-4 3s infinite alternate ease-in-out;
+  padding: 0 0.2rem;
+}
+.contact__img {
+  border-radius: 50%;
+  padding: 0.1rem;
+  margin-right: 0.3rem;
+  max-width: 2rem;
+}
+.contact__img-2 {
+  padding: 0.1rem;
+  margin-right: 0.3rem;
+  max-height: 2rem;
+  max-width: 2rem;
+}
+.heart__img {
+  padding: 0.1rem;
+  margin-right: 0.3rem;
+  max-height: 1.3rem;
+  max-width: 1.3rem;
+}
+
+.footer-link {
+  margin: 0 0.5rem;
+}
+.footer-link a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link a:hover {
+  color: #ffa500;
+  text-decoration: underline;
+}
+
+.footer-link:active {
+  color: #ff6347;
+  transform: translateY(0.2rem);
+}
+
+/* end Footer */
