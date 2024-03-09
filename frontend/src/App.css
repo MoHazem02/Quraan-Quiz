@@ -22,6 +22,7 @@
   --font-size-medium: 2.2rem;
   --font-weight-bold: 700;
   --max-width: 100vb;
+  --max-width-mobile: 40vb;
 }
 * {
   margin: 0;
@@ -217,6 +218,9 @@ body {
   background-color: #ccc;
   margin: 20px 0;
   opacity: 0.3;
+  @media (max-width: 768px) {
+    width: var(--max-width-mobile);
+  }
 }
 
 .card__input {
