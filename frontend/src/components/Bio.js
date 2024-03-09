@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import MySelect from "./MySelect";
 const Bio = () => {
   const topAyah = "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ";
   const [randomAyahNumber, setRandomAyahNumber] = useState(null);
@@ -28,9 +28,10 @@ const Bio = () => {
   }, []);
 
   return (
-    <div className="bio">
+    <div className="bio" dir="rtl">
       <div className="bio__top">{topAyah}</div>
       <div className="bio__center">{randomAyahText}</div>
+      <MySelect />
     </div>
   );
 };
