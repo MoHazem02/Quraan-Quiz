@@ -31,6 +31,7 @@ const Bio = () => {
     <div className="bio" dir="rtl">
       <div className="bio__top">{topAyah}</div>
       <div className="bio__center">{randomAyahText}</div>
+<div className="horizontal-line"></div>
       <MySelect />
     </div>
   );

@@ -6,10 +6,12 @@
   --color-light-gray: #f5f5f5;
   --color-white: white;
   --color-dark-white: #f5f5f5;
+  --color-gray: rgba(128, 128, 128, 0.842);
   --color-box-img: #cdcdcd;
   --color-background: #282c34;
   --color-background-darker: #20232a;
   --color-white-blue: #61dafb;
+  --color-gold: gold;
   --color-orange: orange;
   --color-purple: #864cff;
   --color-dark-purple: #4b0cd1;
@@ -19,6 +21,7 @@
   --font-size-large: 2.5rem;
   --font-size-medium: 2.2rem;
   --font-weight-bold: 700;
+  --max-width: 100vb;
 }
 * {
   margin: 0;
@@ -68,24 +71,6 @@ body {
 ::-webkit-scrollbar-thumb {
   border-radius: 0.25rem;
   background: var(--color-orange);
-}
-
-.video__loop {
-  position: fixed;
-  min-width: 100%;
-  min-height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.02;
-}
-
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -200,7 +185,7 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  max-width: 100vb;
+  max-width: var(--max-width);
   margin: 1rem 0.2rem;
   @media (max-width: 768px) {
     font-size: var(--font-size-small-1);
@@ -210,7 +195,7 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #42b883; /* You can change this color */
+  background-color: #42b883;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,12 +204,19 @@ body {
   position: fixed;
   bottom: 76%;
   right: 63%;
+  z-index: 999;
   @media (max-width: 768px) {
     bottom: 78%;
     right: 40%;
   }
+}
 
-  z-index: 999; /* Ensure it's on top of other content */
+.horizontal-line {
+  width: var(--max-width);
+  height: 1px;
+  background-color: #ccc;
+  margin: 20px 0;
+  opacity: 0.3;
 }
 
 .card__input {
@@ -243,34 +235,53 @@ body {
 }
 .form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   gap: 1rem;
 }
-.card__button {
-  color: var(--color-white);
-  padding: 0.6rem 2rem;
-  border-radius: 0.5rem;
-  font-weight: var(--font-weight-bold);
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  background: var(--color-purple);
-  font-size: var(--font-size-medium);
+
+.next-button {
+  background-color: #4caf4f9e;
   border: none;
-  outline: none;
-  text-transform: uppercase;
-  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
-  @media (max-width: 768px) {
-    font-size: var(--font-size-small);
-  }
+  color: var(--color-white);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+.next-button-2 {
+  background-color: inherit;
+  border: 1px solid var(--color-gray);
+  color: var(--color-gray);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
 }
 
-.card__button:hover {
-  background: var(--color-dark-purple);
+.next-button-2:hover {
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+  text-decoration: underline;
 }
-
-.card__button:active {
+.next-button:hover {
+  background-color: #45a049;
+}
+.next-button:active:hover {
+  background-color: #005f7f;
+}
+.next-button-2:active,
+.next-button:active {
   transform: scale(0.98);
   transform: translateY(0.2rem);
 }

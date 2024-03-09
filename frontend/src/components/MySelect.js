@@ -46,7 +46,8 @@ const MySelect = () => {
           {/* Add more suras as needed */}
         </datalist>
         <div className="form">
-          <button type="submit" className="card__button">إرسال</button>
+          <button type="submit" className="next-button">إرسال</button>
+          <button type="submit" className="next-button-2">التالي</button>
         </div>
       </form>
     </div>
