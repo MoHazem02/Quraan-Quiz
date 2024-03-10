@@ -1,53 +1,36 @@
-import React, { useState,useEffect } from "react";
+import fetchRandomAyah from "./API";
 
-const MySelect = () => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const [inputValue, setInputValue] = useState("");
-  const [userScore, setUserScore] = useState(0); // Assuming initial score is 0
+const MySelect = ({ randomAyahNumber, setRandomAyahText }) => {
+  const handleNextAyah = async () => {
+    try {
 
-  useEffect(() => {
-    // Simulating user score change
-    const interval = setInterval(() => {
-      setUserScore(prevScore => prevScore + 1);
-    }, 2000); // Change the interval as per your requirement or remove this code if the score doesn't change over time
-
-    return () => clearInterval(interval);
-  }, []);
-
-
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Selected option:", selectedOption);
-    // You can perform any additional actions here, such as submitting the form or updating state.
+      const nextAyah = await fetchRandomAyah(1);
+      setRandomAyahText(nextAyah.text);
+    } catch (error) {
+      console.error("Error fetching next Ayah:", error);
+    }
   };
 
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="score-circle">{userScore}</div>
-      <form onSubmit={handleSubmit}>
+      <div className="score-circle">1</div>
+      <form>
         <input
           type="text"
           name="quranSura"
           list="quranSuraList"
-          value={inputValue}
           className="card__input"
           placeholder="اختر سورة من كتاب الله"
-          onChange={handleInputChange}
         />
         <datalist id="quranSuraList">
           <option value="الفاتحة" />
           <option value="البقرة" />
           <option value="آل عمران" />
           <option value="النساء" />
-          {/* Add more suras as needed */}
         </datalist>
         <div className="form">
-          <button type="submit" className="next-button">إرسال</button>
-          <button type="submit" className="next-button-2">التالي</button>
+          <button className="next-button">إرسال</button>
+          <button className="next-button-2" onClick={handleNextAyah}>التالي</button>
         </div>
       </form>
     </div>
