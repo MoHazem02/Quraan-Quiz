@@ -10,7 +10,7 @@ const Bio = () => {
     const fetchData = async () => {
       const randomAyah = await fetchRandomAyah(0);
       setRandomAyahText(randomAyah.text);
-      setRandomAyahNumber(randomAyah.number);
+      setRandomAyahNumber(randomAyah.numberInSurah);
     };
 
     fetchData();
@@ -19,7 +19,7 @@ const Bio = () => {
   return (
     <div className="bio" dir="rtl">
       <div className="bio__top">{topAyah}</div>
-      <div className="bio__center">{randomAyahText} {randomAyahNumber}</div>
+      <div className="bio__center">{randomAyahText} {randomAyahNumber + '\u06DD'}</div>
 <div className="horizontal-line"></div>
       <MySelect randomAyahNumber={randomAyahNumber} randomAyahText={randomAyahText}/>
     </div>
