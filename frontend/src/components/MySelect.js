@@ -1,19 +1,40 @@
 import fetchRandomAyah from "./API";
+import React, { useState } from "react";
+
 
 const MySelect = ({ randomAyahNumber, setRandomAyahText }) => {
+
+  const [selectedSurah, setSelectedSurah] = useState(""); // State to store the selected surah
+  const [score, setScore] = useState(0); // State to store the score
+  let correctSurah = "البقرة"; // Example: Set the correct surah name
+
   const handleNextAyah = async () => {
     try {
 
       const nextAyah = await fetchRandomAyah(1);
       setRandomAyahText(nextAyah.text);
+      correctSurah = nextAyah.surah.name;
     } catch (error) {
       console.error("Error fetching next Ayah:", error);
     }
   };
 
+  const checkAnswer = (event) => {
+    event.preventDefault();
+    if (selectedSurah == correctSurah.split(' ')[1]) 
+    {
+      setScore(score + 1);
+    } else 
+    {
+      setScore(score - 1);
+    }
+    console.log(selectedSurah);
+    console.log(correctSurah);
+  };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-      <div className="score-circle">1</div>
+      <div id="score" className="score-circle">{score}</div>
       <form>
         <input
           type="text"
@@ -21,6 +42,7 @@ const MySelect = ({ randomAyahNumber, setRandomAyahText }) => {
           list="quranSuraList"
           className="card__input"
           placeholder="اختر سورة من كتاب الله"
+          onChange={(e) => setSelectedSurah(e.target.value)} // Update selectedSurah state
         />
         <datalist id="quranSuraList">
           <option value="الفاتحة" />
@@ -140,7 +162,7 @@ const MySelect = ({ randomAyahNumber, setRandomAyahText }) => {
       </datalist>
 
         <div className="form">
-          <button className="next-button">إرسال</button>
+          <button className="next-button" onClick={checkAnswer}>إرسال</button>
           <button className="next-button-2" onClick={handleNextAyah}>التالي</button>
         </div>
       </form>
