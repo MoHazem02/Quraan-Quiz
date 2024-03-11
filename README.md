@@ -41,7 +41,10 @@ cd React-App
    `npm start`
 
 # Contributions 
-Submit a pull request.
+We currently want to add 2 more features:
+1. Adding the Ayah symbol (U+06DD) with a number inside it.
+2. Display the next or previous ayah at cost from the score (for example every 2 clicks will reduce 1 point)
+Submit a pull request with one of those 2 features or contact us for other ideas.
 
 ## Authors
 
