@@ -44,7 +44,7 @@ Submit a pull request.
 ## Authors
 
 - [Mohamed Hazem](https://github.com/MoHazem02)
-- [Mahmoud Mansy]((https://github.com/MMansy19))
+- [Mahmoud Mansy]((https://github.com/MMansy19)
 
 
 
