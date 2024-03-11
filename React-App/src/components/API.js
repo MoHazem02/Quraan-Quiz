@@ -1,4 +1,4 @@
-const fetchRandomAyah = async (randomNumber) => {
+const fetchRandomAyah = async (randomNumber = 0) => {
   try {
     if(randomNumber === 0){
     randomNumber = Math.floor(Math.random() * 6236) + 1;

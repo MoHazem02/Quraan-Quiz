@@ -1,0 +1,206 @@
+import React, { useState, useEffect } from "react";
+import fetchRandomAyah from "./API";
+
+const Bio = () => {
+  const topAyah = "بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ";
+  const [randomAyahText, setRandomAyahText] = useState("");
+  const [randomAyahNumber, setRandomAyahNumber] = useState("");
+  const [correctSurah, setCorrectSurah] = useState("");
+  const [correctSurahNumber, setCorrectSurahNumber] = useState("");
+  const [selectedSurah, setSelectedSurah] = useState("");
+  const [score, setScore] = useState(0);
+
+  const quranSuraList = [
+    { id: 1, value: 'الفاتحة' },
+    { id: 2, value: 'البقرة' },
+    { id: 3, value: 'آل عمران' },
+    { id: 4, value: 'النساء' },
+    { id: 5, value: 'المائدة' },
+    { id: 6, value: 'الأنعام' },
+    { id: 7, value: 'الأعراف' },
+    { id: 8, value: 'الأنفال' },
+    { id: 9, value: 'التوبة' },
+    { id: 10, value: 'يونس' },
+    { id: 11, value: 'هود' },
+    { id: 12, value: 'يوسف' },
+    { id: 13, value: 'الرعد' },
+    { id: 14, value: 'إبراهيم' },
+    { id: 15, value: 'الحجر' },
+    { id: 16, value: 'النحل' },
+    { id: 17, value: 'الإسراء' },
+    { id: 18, value: 'الكهف' },
+    { id: 19, value: 'مريم' },
+    { id: 20, value: 'طه' },
+    { id: 21, value: 'الأنبياء' },
+    { id: 22, value: 'الحج' },
+    { id: 23, value: 'المؤمنون' },
+    { id: 24, value: 'النور' },
+    { id: 25, value: 'الفرقان' },
+    { id: 26, value: 'الشعراء' },
+    { id: 27, value: 'النمل' },
+    { id: 28, value: 'القصص' },
+    { id: 29, value: 'العنكبوت' },
+    { id: 30, value: 'الروم' },
+    { id: 31, value: 'لقمان' },
+    { id: 32, value: 'السجدة' },
+    { id: 33, value: 'الأحزاب' },
+    { id: 34, value: 'سبأ' },
+    { id: 35, value: 'فاطر' },
+    { id: 36, value: 'يس' },
+    { id: 37, value: 'الصافات' },
+    { id: 38, value: 'ص' },
+    { id: 39, value: 'الزمر' },
+    { id: 40, value: 'غافر' },
+    { id: 41, value: 'فصلت' },
+    { id: 42, value: 'الشورى' },
+    { id: 43, value: 'الزخرف' },
+    { id: 44, value: 'الدخان' },
+    { id: 45, value: 'الجاثية' },
+    { id: 46, value: 'الأحقاف' },
+    { id: 47, value: 'محمد' },
+    { id: 48, value: 'الفتح' },
+    { id: 49, value: 'الحجرات' },
+    { id: 50, value: 'ق' },
+    { id: 51, value: 'الذاريات' },
+    { id: 52, value: 'الطور' },
+    { id: 53, value: 'النجم' },
+    { id: 54, value: 'القمر' },
+    { id: 55, value: 'الرحمن' },
+    { id: 56, value: 'الواقعة' },
+    { id: 57, value: 'الحديد' },
+    { id: 58, value: 'المجادلة' },
+    { id: 59, value: 'الحشر' },
+    { id: 60, value: 'الممتحنة' },
+    { id: 61, value: 'الصف' },
+    { id: 62, value: 'الجمعة' },
+    { id: 63, value: 'المنافقون' },
+    { id: 64, value: 'التغابن' },
+    { id: 65, value: 'الطلاق' },
+    { id: 66, value: 'التحريم' },
+    { id: 67, value: 'الملك' },
+    { id: 68, value: 'القلم' },
+    { id: 69, value: 'الحاقة' },
+    { id: 70, value: 'المعارج' },
+    { id: 71, value: 'نوح' },
+    { id: 72, value: 'الجن' },
+    { id: 73, value: 'المزمل' },
+    { id: 74, value: 'المدثر' },
+    { id: 75, value: 'القيامة' },
+    { id: 76, value: 'الإنسان' },
+    { id: 77, value: 'المرسلات' },
+    { id: 78, value: 'النبأ' },
+    { id: 79, value: 'النازعات' },
+    { id: 80, value: 'عبس' },
+    { id: 81, value: 'التكوير' },
+    { id: 82, value: 'الإنفطار' },
+    { id: 83, value: 'المطففين' },
+    { id: 84, value: 'الإنشقاق' },
+    { id: 85, value: 'البروج' },
+    { id: 86, value: 'الطارق' },
+    { id: 87, value: 'الأعلى' },
+    { id: 88, value: 'الغاشية' },
+    { id: 89, value: 'الفجر' },
+    { id: 90, value: 'البلد' },
+    { id: 91, value: 'الشمس' },
+    { id: 92, value: 'الليل' },
+    { id: 93, value: 'الضحى' },
+    { id: 94, value: 'الشرح' },
+    { id: 95, value: 'التين' },
+    { id: 96, value: 'العلق' },
+    { id: 97, value: 'القدر' },
+    { id: 98, value: 'البينة' },
+    { id: 99, value: 'الزلزلة' },
+    { id: 100, value: 'العاديات' },
+    { id: 101, value: 'القارعة' },
+    { id: 102, value: 'التكاثر' },
+    { id: 103, value: 'العصر' },
+    { id: 104, value: 'الهمزة' },
+    { id: 105, value: 'الفيل' },
+    { id: 106, value: 'قريش' },
+    { id: 107, value: 'الماعون' },
+    { id: 108, value: 'الكوثر' },
+    { id: 109, value: 'الكافرون' },
+    { id: 110, value: 'النصر' },
+    { id: 111, value: 'المسد' },
+    { id: 112, value: 'الإخلاص' },
+    { id: 113, value: 'الفلق' },
+    { id: 114, value: 'الناس' }
+  ];
+
+  useEffect(() => {
+    fetchData();
+    populateDataList();
+    }, []);
+  
+  const fetchData = async () => {
+    const randomAyah = await fetchRandomAyah();
+    setRandomAyahText(randomAyah.text);
+    setRandomAyahNumber(randomAyah.numberInSurah);
+    setCorrectSurah(randomAyah.surah.name);
+    setCorrectSurahNumber(randomAyah.surah.number);
+  };
+
+  const populateDataList = () => {
+    const datalist = document.getElementById('quranSuraList');
+    datalist.innerHTML = '';
+
+    // Populate datalist options from the array
+    quranSuraList.forEach((item) => {
+      const option = document.createElement('option');
+      option.value = `${item.id} ${item.value}`; // Concatenate ID and text
+      datalist.appendChild(option);
+    });
+  };
+
+const handleNextAyah = (event) => {
+    event.preventDefault();
+    fetchData();
+};
+
+  const checkAnswer = (event) => {
+    event.preventDefault();
+    const selectedSurahID = parseInt(selectedSurah); // Parse selectedSurah to an integer
+    let updatedScore = score; // Initialize with the current score
+
+    if (selectedSurahID === correctSurahNumber) {
+      updatedScore = score + 1;
+    } else {
+      updatedScore = score - 1;
+    }
+
+    // Update the score state
+    setScore(updatedScore);
+  };
+
+  return (
+    <div className="bio" dir="rtl">
+      <div className="bio__top">{topAyah}
+        <div id="score" className="score-circle" dir="ltr">{score}</div>
+      </div>
+      
+      <div className="bio__center">{randomAyahText} ({randomAyahNumber})</div>
+      <div className="horizontal-line"></div>
+      
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <form className="form">
+          <input
+            type="text"
+            name="quranSura"
+            list="quranSuraList"
+            className="card__input"
+            placeholder="اختر سورة من كتاب الله"
+            onChange={(e) => setSelectedSurah(e.target.value)} // Update selectedSurah state
+          />
+          <datalist id="quranSuraList"></datalist>
+
+          <div className="buttons">
+            <button className="submit-button" onClick={checkAnswer}>إرسال</button>
+            <button className="next-button" onClick={handleNextAyah}>التالي</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default Bio;
