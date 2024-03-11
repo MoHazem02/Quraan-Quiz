@@ -164,12 +164,14 @@ const handleNextAyah = (event) => {
 
     if (selectedSurahID === correctSurahNumber) {
       updatedScore = score + 1;
+      handleNextAyah(event);
     } else {
       updatedScore = score - 1;
     }
 
     // Update the score state
     setScore(updatedScore);
+    setSelectedSurah(""); // Reset selectedSurah state to empty string
   };
 
   return (
@@ -189,6 +191,7 @@ const handleNextAyah = (event) => {
             list="quranSuraList"
             className="card__input"
             placeholder="اختر سورة من كتاب الله"
+            value={selectedSurah}
             onChange={(e) => setSelectedSurah(e.target.value)} // Update selectedSurah state
           />
           <datalist id="quranSuraList"></datalist>
