@@ -7,7 +7,7 @@ Quraan Quiz is a web application that displays a random verse (ayah) from the Ho
 
 ## Demo
 
-You can try the Quraan Quiz app live [here](https://your-netlify-app-url.com).
+You can try the Quraan Quiz app live [here](https://main--quraan-quiz.netlify.app/).
 
 ## Features
 
@@ -18,7 +18,7 @@ You can try the Quraan Quiz app live [here](https://your-netlify-app-url.com).
 
 ## Usage
 
-1. Visit the live app [here](https://your-netlify-app-url.com).
+1. Visit the live app [here](https://main--quraan-quiz.netlify.app/).
 2. Read the displayed verse carefully.
 3. Select the surah you think the verse belongs to from the options provided.
 4. Submit your answer and see if you're correct!
