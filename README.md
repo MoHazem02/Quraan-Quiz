@@ -1,4 +1,6 @@
-<img width="512" alt="6-20" src="https://github.com/MoHazem02/Quraan-Quiz/assets/66066832/7d529959-7397-4eeb-8b4c-32c3fda6f5fd">
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <img width="512" alt="6-20" src="https://github.com/MoHazem02/Quraan-Quiz/assets/66066832/7d529959-7397-4eeb-8b4c-32c3fda6f5fd">
+</div>
 
 
 # Quraan Quiz
