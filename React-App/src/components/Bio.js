@@ -191,7 +191,7 @@ const showPrevAyah = (event) => {
     {
         setRandomAyahText(correctSurah);
         setRandomAyahNumberInSurah("x");
-        updatedScore = score - 2; // Penalty for not knowing
+        updatedScore = score - 1; // Penalty for not knowing
         setTimeout(() => {
             handleNextAyah(event);
           }, 2000); // wait for 2 seconds
