@@ -3,7 +3,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <p className="footer__author">
-        <span className="footer-link"><a href="https://github.com/MoHazem02/Quraan-Quiz" target="_blank" rel="noreferrer">© Quran Quiz</a></span><span className="arrow">🔻</span></p>
+        <span className="footer-link"><a href="https://github.com/MoHazem02/Quraan-Quiz" target="_blank" rel="noreferrer">© Quraan Quiz</a></span><span className="arrow">🔻</span></p>
         <p className="footer__bio">Made with <span className="heart">
           <img
         className="heart__img"

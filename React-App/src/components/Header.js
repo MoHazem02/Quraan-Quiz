@@ -7,9 +7,9 @@ const Header = () => {
         <img
           className="logo__img"
           src="./assets/images/quranIcon.png"
-          alt="Icon of quran"
+          alt="Icon of Quraan"
         />
-        <span className="logo__link"><a href="https://github.com/MoHazem02/Quraan-Quiz" target="_blank" rel="noreferrer">Quran Quiz</a></span>
+        <span className="logo__link"><a href="https://github.com/MoHazem02/Quraan-Quiz" target="_blank" rel="noreferrer">Quraan Quiz</a></span>
 
       </div>
     </header>
